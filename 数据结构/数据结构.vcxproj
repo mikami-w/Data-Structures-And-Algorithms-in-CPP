@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClInclude Include="app.h" />
     <ClInclude Include="deque.h" />
+    <ClInclude Include="FixedLengthContainers.h" />
     <ClInclude Include="IContainers.h" />
     <ClInclude Include="queue.h" />
     <ClInclude Include="list.h" />

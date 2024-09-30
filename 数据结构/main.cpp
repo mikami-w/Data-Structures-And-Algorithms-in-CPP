@@ -10,5 +10,7 @@ deque:用指针列表管理多段连续内存,实现假连续空间随机存取
 int main()
 {
 	TestVector();
+	std::cout << std::endl;
+	TestFixedLengthStackAndQueue();
 	return 0;
 }

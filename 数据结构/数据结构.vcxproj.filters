@@ -44,5 +44,8 @@
     <ClInclude Include="app.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="FixedLengthContainers.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

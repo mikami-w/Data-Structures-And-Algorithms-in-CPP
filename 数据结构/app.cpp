@@ -1,6 +1,4 @@
 #include "app.h"
-#include <iostream>
-#include <sstream>
 namespace mkm = Mikami;
 using std::cin, std::cout, std::endl;
 
@@ -76,3 +74,40 @@ void TestVector()
 
 	
 }
+
+void TestFixedLengthStackAndQueue()
+{
+	using Q = mkm::FLQueue<int, 16>;
+	using S = mkm::FLStack<int, 15>;
+
+	S s; Q q;
+	cout << s.empty() << ' ' << q.empty() << endl;
+	std::initializer_list<int> li{ 0,1,2,3,4,5,6,7,8,9,10,11 };
+	for (auto x : li) {
+		s.push(x);
+		q.in_queue(x);
+		cout << s.top() << '\t' << q.front() << endl;
+	}
+
+	cout << endl;
+
+	for (int i = 0; i < 9; ++i) {
+		cout << s.pop() << '\t' << q.de_queue() << endl;
+	}
+
+	cout << endl;
+
+	for (auto x : li) {
+		s.push(x);
+		q.in_queue(x);
+		cout << s.top() << '\t' << q.front() << endl;
+	}
+
+	cout << endl;
+
+	for (int i = 0; i < 15; i++) {
+		cout << s.pop() << '\t' << q.de_queue() << endl;
+	}
+
+}
+
