@@ -4,16 +4,17 @@
 #include "vector.h"
 #include "FixedLengthContainers.h"
 #include "toReversePolishNotation.h"
+#include "PolishNotationSolution.h"
 #include <iostream>
 #include <sstream>
 #include <string>
-
-void RedirectInputBuffer(std::string& str);
 
 void TestVector();
 
 void TestFixedLengthStackAndQueue();
 
 void TestToReversePolishNotation();
+
+void TestPolishNotationSolution();
 
 #endif

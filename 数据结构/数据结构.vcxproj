@@ -131,6 +131,7 @@
   <ItemGroup>
     <ClCompile Include="app.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PolishNotationSolution.cpp" />
     <ClCompile Include="toReversePolishNotation.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +139,7 @@
     <ClInclude Include="deque.h" />
     <ClInclude Include="FixedLengthContainers.h" />
     <ClInclude Include="IContainers.h" />
+    <ClInclude Include="PolishNotationSolution.h" />
     <ClInclude Include="queue.h" />
     <ClInclude Include="list.h" />
     <ClInclude Include="stack.h" />

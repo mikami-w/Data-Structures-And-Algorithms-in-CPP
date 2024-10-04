@@ -11,6 +11,12 @@ int main()
 {
 	TestVector();
 	std::cout << std::endl;
+
 	TestFixedLengthStackAndQueue();
+	std::cout << std::endl;
+
+	TestPolishNotationSolution();
+	std::cout << std::endl;
+
 	return 0;
 }

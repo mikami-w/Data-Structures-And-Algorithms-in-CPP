@@ -2,14 +2,6 @@
 namespace mkm = Mikami;
 using std::cin, std::cout, std::endl;
 
-auto defaultcinbuf = cin.rdbuf();
-
-void RedirectInputBuffer(std::string& str)
-{
-	std::istringstream iss(str);
-	cin.rdbuf(iss.rdbuf());
-}
-
 void TestVector()
 {
 	mkm::Vector<int,4> vec;
@@ -116,3 +108,9 @@ void TestToReversePolishNotation()
 	cout << mkm::ntoReversePolishNotation("-2.4+3*(7-4)+8/4");
 }
 
+void TestPolishNotationSolution()
+{
+	cout << mkm::solvePolishNotation("+ + -2 * 32.5 - 7 -4.2 / 8 4") << endl;
+	cout << mkm::solvePolishNotation("/ 0 0") << endl;
+	cout << mkm::solvePolishNotation("2");
+}

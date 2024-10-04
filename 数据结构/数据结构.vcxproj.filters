@@ -24,6 +24,9 @@
     <ClCompile Include="toReversePolishNotation.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="PolishNotationSolution.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="queue.h">
@@ -51,6 +54,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="toReversePolishNotation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PolishNotationSolution.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
