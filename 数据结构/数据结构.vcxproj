@@ -131,6 +131,7 @@
   <ItemGroup>
     <ClCompile Include="app.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="toReversePolishNotation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="app.h" />
@@ -140,6 +141,7 @@
     <ClInclude Include="queue.h" />
     <ClInclude Include="list.h" />
     <ClInclude Include="stack.h" />
+    <ClInclude Include="toReversePolishNotation.h" />
     <ClInclude Include="vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

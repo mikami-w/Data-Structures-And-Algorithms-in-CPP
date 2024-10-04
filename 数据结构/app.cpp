@@ -111,3 +111,8 @@ void TestFixedLengthStackAndQueue()
 
 }
 
+void TestToReversePolishNotation()
+{
+	cout << mkm::toReversePolishNotation("-2.4+3*(7-4)+8/4");
+}
+
