@@ -1,8 +1,12 @@
 #ifndef TOREVERSEPOLISHNOTATION_H
 #define TOREVERSEPOLISHNOTATION_H
-#include "FixedLengthContainers.h"
-#include <string>
 
-std::string Mikami::toReversePolishNotation(const std::string& input);
+#include <string>
+#include "FixedLengthContainers.h"
+
+namespace Mikami
+{
+	std::string ntoReversePolishNotation(const std::string& input);
+}
 
 #endif

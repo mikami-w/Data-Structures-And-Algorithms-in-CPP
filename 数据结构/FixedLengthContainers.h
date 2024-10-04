@@ -1,6 +1,6 @@
 #ifndef FIXEDLENGTHCONTAINERS_H
 #define FIXEDLENGTHCONTAINERS_H
-#include <exception>
+#include <stdexcept>
 
 namespace Mikami
 {

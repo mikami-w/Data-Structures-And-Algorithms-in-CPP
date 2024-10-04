@@ -4,7 +4,7 @@
 
 namespace Mikami
 {
-	std::string toReversePolishNotation(const std::string& input)
+	std::string ntoReversePolishNotation(const std::string& input)
 	{//中缀表达式转换为后缀表达式
 		//符号栈按运算顺序 严格单调递增(左结合性) 或 单调递增(右结合性)
 		//若待进栈符号会破坏以上规则,则弹出栈中元素直到该符号进栈后仍然符合规则
@@ -55,15 +55,10 @@ namespace Mikami
 				--it;
 				break;
 			}
-			//case dot:
-			//{
-			//	result.pop_back();
-			//	result += *it;
-			//}
 			case ope:
 			{
-				//右结合性(正负号)
-				if (it == input.begin()) {
+				//正负号
+				if (it == input.begin()) {	//
 					if (*it == '-') result += *it;
 					break;
 				}
