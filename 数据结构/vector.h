@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <type_traits>
 #include <initializer_list>
-#include "IContainers.h"
+//#include "IContainers.h"
 // vector:使用静态数组,若内存不足则扩容,复制全部数据到扩容数组后删除原数组
 
 namespace Mikami
@@ -82,7 +82,7 @@ namespace Mikami
 	typename Vector<T, INITCHUNKSIZE>::iterator::self operator+(int diff, typename Vector<T, INITCHUNKSIZE>::iterator::self it) { return iterator(it.p + diff); }
 
 	template<typename T, int INITCHUNKSIZE>
-	void Vector<T, INITCHUNKSIZE>::swap(Vector<T, INITCHUNKSIZE>& obj)
+	void Vector<T, INITCHUNKSIZE>::swap(Vector<T, INITCHUNKSIZE>& _obj)
 	{
 		T* tdata = _data;
 		_data = _obj._data;
