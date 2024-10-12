@@ -26,8 +26,8 @@ namespace Mikami
 			else {
 				if (iss.rdstate() == std::ios_base::eofbit) return 0;
 				iss.clear();	//清除读取数字失败的state
-				iss.unget();
-				iss.clear();	//清除可能的unget失败的state(当字符为乘除)
+				iss.unget();	//只要unget未设置失败位,则一定回退一个字符;若流开头为'+''-',则会认为是正负号而试图读取,指针+1;若在中间,回退到' ',operator>>会丢弃空白字符
+				iss.clear();	//清除可能的unget失败导致的失败位(当开头字符为乘除,流指针位于0,unget失败,设置失败位)
 				iss >> buf.oper;
 				buf.type = Obj::operation;
 			}
