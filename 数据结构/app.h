@@ -5,6 +5,7 @@
 #include "FixedLengthContainers.h"
 #include "toReversePolishNotation.h"
 #include "PolishNotationSolution.h"
+#include "deque.h"
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -16,5 +17,7 @@ void TestFixedLengthStackAndQueue();
 void TestToReversePolishNotation();
 
 void TestPolishNotationSolution();
+
+void TestDeque();
 
 #endif

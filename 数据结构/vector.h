@@ -4,26 +4,25 @@
 #include <stdexcept>
 #include <type_traits>
 #include <initializer_list>
-//#include "IContainers.h"
 // vector:使用静态数组,若内存不足则扩容,复制全部数据到扩容数组后删除原数组
 
 namespace Mikami
 {
-	template<typename T, int INITCHUNKSIZE = 32>
+	template<typename T, size_t INITCHUNKSIZE = 32>
 	class Vector
 	{
 	public:
 		struct iterator
 		{
 			using iterator_category = std::random_access_iterator_tag;
-			using value_type = T;
-			using difference_type = std::ptrdiff_t;
-			using pointer = T*;
-			using referrence = T&;
-			using self = iterator;
+			using value_type		= T;
+			using difference_type	= std::ptrdiff_t;
+			using pointer			= T*;
+			using referrence		= T&;
+			using self				= iterator;
 
 			explicit iterator() :p(nullptr) {}
-			explicit iterator(T* p_) :p(p_) {}
+			explicit iterator(pointer p_) :p(p_) {}
 
 			bool operator==(const self& it) { return p == it.p; }
 			bool operator!=(const self& it) { return p != it.p; }
@@ -63,7 +62,7 @@ namespace Mikami
 		T* data() { return _data; }
 		//const T* data() const { return _data; }
 		T pop_back() { if (_size) return _data[_size--]; else throw std::out_of_range("Vector is empty."); }
-		void push_back(const T& value) { expand_if_full(); _data[_size++] = value; }
+		void push_back(const T& value) { _expand_if_full(); _data[_size++] = value; }
 		iterator begin() { return iterator(_data); }
 		iterator end() { return iterator(_data + _size); }
 		void append(std::initializer_list<T> li) { append(li.begin(), li.end()); }
@@ -75,13 +74,13 @@ namespace Mikami
 		size_t _size;
 
 		void _expand(size_t multiple = 2);
-		void expand_if_full(size_t newdata = 1);
+		void _expand_if_full(size_t newdata = 1);
 	};
 
-	template<typename T, int INITCHUNKSIZE>
+	template<typename T, size_t INITCHUNKSIZE>
 	typename Vector<T, INITCHUNKSIZE>::iterator::self operator+(int diff, typename Vector<T, INITCHUNKSIZE>::iterator::self it) { return iterator(it.p + diff); }
 
-	template<typename T, int INITCHUNKSIZE>
+	template<typename T, size_t INITCHUNKSIZE>
 	void Vector<T, INITCHUNKSIZE>::swap(Vector<T, INITCHUNKSIZE>& _obj)
 	{
 		T* tdata = _data;
@@ -97,17 +96,17 @@ namespace Mikami
 		_obj._capacity = tcapacity;
 	}
 
-	template<typename T, int INITCHUNKSIZE>
+	template<typename T, size_t INITCHUNKSIZE>
 	inline Vector<T, INITCHUNKSIZE>::Vector(size_t count, const T& value) :_capacity(count <= INITCHUNKSIZE ? INITCHUNKSIZE : count * 1.5), _size(count)
 	{
 		static_assert(std::is_constructible<T, const T&>::value,
-			"Type T must be copy-constructible.(Mikami::Vector<T, INITCHUNKSIZE>::Vector(int,const T&)");
+			"Type T must be copy-constructible.(Mikami::Vector<T, INITCHUNKSIZE>::Vector(size_t,const T&)");
 
 		_data = new T[_capacity];
 		for (int i = 0; i < count; ++i)
 			*(_data + i) = value;
 	}
-	template<typename T, int INITCHUNKSIZE>
+	template<typename T, size_t INITCHUNKSIZE>
 	inline Vector<T, INITCHUNKSIZE>::Vector(std::initializer_list<T> li) :_size(li.size()), _capacity(li.size() <= INITCHUNKSIZE ? INITCHUNKSIZE : li.size() * 1.5)
 	{
 		static_assert(std::is_constructible<T, const T&>::value,
@@ -119,16 +118,16 @@ namespace Mikami
 			_data[i++] = T(x);
 	}
 
-	template<typename T, int INITCHUNKSIZE>
+	template<typename T, size_t INITCHUNKSIZE>
 	inline void Vector<T, INITCHUNKSIZE>::append(iterator _begin, iterator _end)
 	{
-		expand_if_full(_end - _begin);
+		_expand_if_full(_end - _begin);
 		for (int i = 0; _begin < _end; ++_begin, ++i) {
 			_data[_size + i] = *_begin;
 		}
 	}
 
-	template<typename T, int INITCHUNKSIZE>
+	template<typename T, size_t INITCHUNKSIZE>
 	inline void Vector<T, INITCHUNKSIZE>::_expand(size_t multiple)
 	{
 		if constexpr (	// 无需构造函数
@@ -143,7 +142,7 @@ namespace Mikami
 		}
 		else {	// 需要移动与复制构造函数
 			static_assert(std::is_constructible<T, T&&>::value && std::is_constructible<T, const T&>,
-				"Type T must be copy-constructible and move-constructible.(Mikami::Vector<T, INITCHUNKSIZE>::_expand(int))");
+				"Type T must be copy-constructible and move-constructible.(Mikami::Vector<T, INITCHUNKSIZE>::_expand(size_t))");
 
 			T* _old = _data;
 			_data = new T[_capacity *= multiple];
@@ -155,8 +154,8 @@ namespace Mikami
 		}
 	}
 
-	template<typename T, int INITCHUNKSIZE>
-	inline void Vector<T, INITCHUNKSIZE>::expand_if_full(size_t newdata)
+	template<typename T, size_t INITCHUNKSIZE>
+	inline void Vector<T, INITCHUNKSIZE>::_expand_if_full(size_t newdata)
 	{
 		size_t need = newdata - (_capacity - _size);
 		if (need > 0)
@@ -165,4 +164,4 @@ namespace Mikami
 
 }
 
-#endif
+#endif	// VECTOR_H

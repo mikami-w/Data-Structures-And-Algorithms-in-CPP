@@ -138,7 +138,7 @@
     <ClInclude Include="app.h" />
     <ClInclude Include="deque.h" />
     <ClInclude Include="FixedLengthContainers.h" />
-    <ClInclude Include="IContainers.h" />
+    <ClInclude Include="iterator_deque.h" />
     <ClInclude Include="PolishNotationSolution.h" />
     <ClInclude Include="queue.h" />
     <ClInclude Include="list.h" />

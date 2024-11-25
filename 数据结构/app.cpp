@@ -114,3 +114,8 @@ void TestPolishNotationSolution()
 	cout << mkm::solvePolishNotation("/ 0 0") << endl;
 	cout << mkm::solvePolishNotation("2");
 }
+
+void TestDeque()
+{
+	mkm::Deque<int> deq;
+}
